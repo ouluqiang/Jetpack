@@ -4,13 +4,21 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation_main"
             app:startDestination="@id/launchFragment">
 
-    <fragment android:id="@+id/launchFragment" android:name="com.example.jetpack.ui.LaunchFragment"
+    <fragment android:id="@+id/launchFragment" android:name="com.example.jetpack.ui.home.LaunchFragment"
               android:label="launch_fragment" tools:layout="@layout/launch_fragment">
         <action
                 android:id="@+id/action_launchFragment_to_homeActivity"
                 app:destination="@id/homeActivity" />
+        <action
+                android:id="@+id/action_launchFragment_to_loginFragment2"
+                app:destination="@id/loginFragment2" />
     </fragment>
     <activity android:id="@+id/homeActivity" android:name="com.example.jetpack.ui.HomeActivity"
             android:label="home_fctivity" tools:layout="@layout/activity_home"
             />
+    <fragment
+            android:id="@+id/loginFragment2"
+            android:name="com.example.jetpack.ui.user.LoginFragment"
+            android:label="login_fragment"
+            tools:layout="@layout/login_fragment" />
 </navigation>

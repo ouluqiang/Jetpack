@@ -1,4 +1,4 @@
-package com.example.jetpack.ui
+package com.example.jetpack.ui.home
 
 import androidx.lifecycle.ViewModel;
 
