@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation_main"
+        app:startDestination="@id/launchFragment">
+
+    <fragment android:id="@+id/launchFragment" android:name="com.example.jetpack.ui.LaunchFragment"
+            android:label="launch_fragment" tools:layout="@layout/launch_fragment"/>
+    <fragment android:id="@+id/mainFragment" android:name="com.example.jetpack.ui.home.MainFragment"
+            android:label="main_fragment" tools:layout="@layout/main_fragment">
+        <action
+                android:id="@+id/action_mainFragment_to_registerFragment"
+                app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.example.jetpack.ui.user.LoginFragment"
+            android:label="login_fragment"
+            tools:layout="@layout/login_fragment" />
+    <fragment
+            android:id="@+id/registerFragment"
+            android:name="com.example.jetpack.ui.user.RegisterFragment"
+            android:label="register_fragment"
+            tools:layout="@layout/register_fragment" />
+</navigation>
