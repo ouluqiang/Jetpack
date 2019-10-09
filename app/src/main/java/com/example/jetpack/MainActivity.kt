@@ -18,8 +18,17 @@ import androidx.navigation.findNavController
 
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
+    /**
+     * 针对ActionBar上的返回，通常需要手动控制返回事件
+     */
+    override fun onSupportNavigateUp(): Boolean {
+        return Navigation.findNavController(this,R.id.nav_fragment).navigateUp()
+    }
+
 }

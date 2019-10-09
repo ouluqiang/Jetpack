@@ -3,14 +3,13 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.user.LoginFragment">
+        tools:context=".ui.tab.TwoFragment">
 
     <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="#55aa55"
-            android:text="LOGIN" />
+            android:background="#0000ff"
+            android:text="Hello" />
 
 </FrameLayout>

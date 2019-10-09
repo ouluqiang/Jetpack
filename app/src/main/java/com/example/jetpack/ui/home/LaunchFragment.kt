@@ -31,7 +31,8 @@ class LaunchFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(LaunchViewModel::class.java)
         // TODO: Use the ViewModel
         textView.setOnClickListener {
-            findNavController().navigate(R.id.homeActivity)
+            findNavController().navigate(R.id.action_launchFragment_to_mainFragment)
+//            findNavController().navigate(R.id.action_launchFragment_to_loginFragment)
         }
     }
 
