@@ -9,6 +9,7 @@
         <action
                 android:id="@+id/action_launchFragment_to_mainFragment"
                 app:destination="@id/mainFragment" />
+
     </fragment>
     <fragment
             android:id="@+id/mainFragment"
@@ -18,6 +19,10 @@
         <action
                 android:id="@+id/action_mainFragment_to_loginFragment"
                 app:destination="@id/loginFragment" />
+        <argument
+                android:name="tag"
+                app:argType="string"
+                android:defaultValue="a" />
     </fragment>
     <fragment
             android:id="@+id/loginFragment"

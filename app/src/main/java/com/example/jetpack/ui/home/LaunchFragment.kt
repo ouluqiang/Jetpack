@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.jetpack.R
 import kotlinx.android.synthetic.main.launch_fragment.*
@@ -30,8 +31,12 @@ class LaunchFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(LaunchViewModel::class.java)
         // TODO: Use the ViewModel
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
         textView.setOnClickListener {
-            findNavController().navigate(R.id.action_launchFragment_to_mainFragment)
+            //传值
+            var args=LaunchFragmentDirections.actionLaunchFragmentToMainFragment()
+            args.setTag("好好")
+            findNavController().navigate(args)
 //            findNavController().navigate(R.id.action_launchFragment_to_loginFragment)
         }
     }

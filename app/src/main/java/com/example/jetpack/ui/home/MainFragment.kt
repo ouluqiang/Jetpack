@@ -16,15 +16,17 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
+import com.example.jetpack.MainActivity
 import com.example.jetpack.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.main_fragment.*
 
 
-class MainFragment : Fragment() {
-//    , NavigationView.OnNavigationItemSelectedListener {
+class MainFragment : Fragment()
+    , NavigationView.OnNavigationItemSelectedListener {
 
     companion object {
         fun newInstance() = MainFragment()
@@ -39,35 +41,43 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        var view = inflater.inflate(R.layout.main_fragment, container, false)
+
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
+        //接受传值
+        var tag = MainFragmentArgs.fromBundle(arguments).tag
 //        textView.setOnClickListener {
 ////            findNavController().navigate()
 //        }
 //        val toolbar: Toolbar = findViewById(R.id.toolbar)
-//        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
 
 //        val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "${tag}", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
 //        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
 //        val navView: NavigationView = findViewById(R.id.nav_view)
-//        val toggle = ActionBarDrawerToggle(
-//            activity, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
-//        )
-//        drawer_layout.addDrawerListener(toggle)
-//        toggle.syncState()
+        val toggle = ActionBarDrawerToggle(
+            activity,
+            drawer_layout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
 //
-//        nav_view.setNavigationItemSelectedListener(this)
+        nav_view.setNavigationItemSelectedListener(this)
 
-        navController= Navigation.findNavController(activity as Activity,R.id.main_fragment)
+        navController = Navigation.findNavController(activity as Activity, R.id.main_fragment)
 
         /**
          *  关联DrawerLayout
@@ -115,7 +125,6 @@ class MainFragment : Fragment() {
 //    }
 
 
-
 //    override fun onBackPressed() {
 ////        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
 //        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -142,34 +151,39 @@ class MainFragment : Fragment() {
         /**
          * 处理options menu事件时，优先交给NavController处理
          */
-        return item.onNavDestinationSelected(Navigation.findNavController(activity as Activity,R.id.main_fragment))||super.onOptionsItemSelected(item)
+        return item.onNavDestinationSelected(
+            Navigation.findNavController(
+                activity as Activity,
+                R.id.main_fragment
+            )
+        ) || super.onOptionsItemSelected(item)
     }
 
-//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-//        // Handle navigation view item clicks here.
-//        when (item.itemId) {
-////            R.id.nav_home -> {
-////                // Handle the camera action
-////            }
-////            R.id.nav_gallery -> {
-////
-////            }
-////            R.id.nav_slideshow -> {
-////
-////            }
-//            R.id.nav_tools -> {
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        // Handle navigation view item clicks here.
+        when (item.itemId) {
+//            R.id.nav_home -> {
+//                // Handle the camera action
+//            }
+//            R.id.nav_gallery -> {
 //
 //            }
-//            R.id.nav_share -> {
+//            R.id.nav_slideshow -> {
 //
 //            }
-//            R.id.nav_send -> {
-//
-//            }
-//        }
-////        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-//        drawer_layout.closeDrawer(GravityCompat.START)
-//        return true
-//    }
+            R.id.nav_tools -> {
+
+            }
+            R.id.nav_share -> {
+
+            }
+            R.id.nav_send -> {
+
+            }
+        }
+//        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
+    }
 
 }
